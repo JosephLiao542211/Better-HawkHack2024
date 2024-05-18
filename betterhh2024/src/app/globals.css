@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Sora:wght@100..800&display=swap');
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -30,4 +32,63 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.10); 
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background:#3772FF; 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #8FB0FF; 
+}
+
+.h1{
+  color: #FFF;
+font-family: "DM Sans";
+font-size: 80px;
+font-style: normal;
+font-weight: 700;
+line-height: 78px; /* 97.5% */
+}
+
+.h2{
+  color: #3772FF;
+font-family: "DM Sans";
+font-style: normal;
+font-weight: 500;
+line-height: 78px; /* 162.5% */
+}
+.p1{
+  color: var(--Surface-main, #FFF);
+
+  /* Body 02 (Bold) */
+  font-family: "DM Sans";
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 24px; /* 133.333% */
+}
+
+.p3{
+  color: #FFF;
+text-align: right;
+font-family: Inter;
+font-size: 20px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
 }
