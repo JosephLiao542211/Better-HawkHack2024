@@ -58,19 +58,19 @@ body {
 
 .h1{
   color: #FFF;
-font-family: "DM Sans";
-font-size: 80px;
-font-style: normal;
-font-weight: 700;
-line-height: 78px; /* 97.5% */
+  font-family: "DM Sans";
+  font-size: 80px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 78px; /* 97.5% */
 }
 
 .h2{
   color: #3772FF;
-font-family: "DM Sans";
-font-style: normal;
-font-weight: 500;
-line-height: 78px; /* 162.5% */
+  font-family: "DM Sans";
+  font-style: normal;
+  font-weight: 500;
+  line-height: 78px; /* 162.5% */
 }
 .p1{
   color: var(--Surface-main, #FFF);
@@ -85,10 +85,9 @@ line-height: 78px; /* 162.5% */
 
 .p3{
   color: #FFF;
-text-align: right;
-font-family: Inter;
-font-size: 20px;
-font-style: normal;
-font-weight: 500;
-line-height: normal;
+  font-family: Inter;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
 }
