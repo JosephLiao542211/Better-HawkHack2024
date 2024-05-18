@@ -23,7 +23,7 @@ const items: ListItem[] = [
 
 const ScrollableList: React.FC = () => {
     return (
-        <div className="h-64 w-full overflow-y-scroll bg-gray-100 p-4 rounded-md shadow-md">
+        <div className="h-64 w-full overflow-y-scroll bg-gray-100 p-4 rounded-md bg-[#191D23] shadow-md">
             <ul className="space-y-2">
                 {items.map(item => (
                     <Item key={item.id} text={item.text} />
