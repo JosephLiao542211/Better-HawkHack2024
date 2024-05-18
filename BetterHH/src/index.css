@@ -19,3 +19,23 @@ font-style: normal;
 font-weight: 500;
 line-height: 78px; /* 162.5% */
 }
+.p1{
+  color: var(--Surface-main, #FFF);
+
+/* Body 02 (Bold) */
+font-family: "DM Sans";
+font-size: 18px;
+font-style: normal;
+font-weight: 700;
+line-height: 24px; /* 133.333% */
+}
+
+.p3{
+  color: #FFF;
+text-align: right;
+font-family: Inter;
+font-size: 20px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+}

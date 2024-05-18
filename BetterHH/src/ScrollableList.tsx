@@ -1,12 +1,12 @@
-import React from 'react';
-import Item from "./Items"; // Corrected from "./Items" to "./Item"
+import React, { useState } from 'react';
+import Item from "./Items";
 
 interface ListItem {
     id: number;
     text: string;
 }
 
-const items: ListItem[] = [
+const initialItems: ListItem[] = [
     { id: 1, text: 'Item 1' },
     { id: 2, text: 'Item 2' },
     { id: 3, text: 'Item 3' },
@@ -22,13 +22,26 @@ const items: ListItem[] = [
 ];
 
 const ScrollableList: React.FC = () => {
+    const [items, setItems] = useState<ListItem[]>(initialItems);
+
+    const addItem = () => {
+        const newItem: ListItem = {
+            id: items.length + 1,
+            text: `Item ${items.length + 1}`
+        };
+        setItems([...items, newItem]);
+    };
+
     return (
-        <div className="h-64 w-full overflow-y-scroll bg-gray-100 p-4 rounded-md bg-[#191D23] shadow-md">
+        <div className="h-64 w-full bg-opacity-0 overflow-y-scroll bg-gray-100 p-4 rounded-md bg-[#191D23] shadow-md">
             <ul className="space-y-2">
                 {items.map(item => (
                     <Item key={item.id} text={item.text} />
                 ))}
             </ul>
+            <button onClick={addItem} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mt-4">
+                Add Item
+            </button>
         </div>
     );
 };
