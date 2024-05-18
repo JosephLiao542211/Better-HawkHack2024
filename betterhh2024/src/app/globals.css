@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Sora:wght@100..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@100;200;300;400;500;600;700;800;900&family=Sora:wght@100;200;300;400;500;600;700;800&display=swap');
 
 :root {
   --foreground-rgb: 0, 0, 0;
@@ -26,6 +26,7 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+  font-family: 'DM Sans', sans-serif; /* Apply DM Sans globally */
 }
 
 @layer utilities {
@@ -47,7 +48,7 @@ body {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background:#3772FF; 
+  background: #3772FF; 
   border-radius: 10px;
 }
 
@@ -56,38 +57,34 @@ body {
   background: #8FB0FF; 
 }
 
-.h1{
+.h1 {
   color: #FFF;
-  font-family: "DM Sans";
+  font-family: 'DM Sans', sans-serif;
   font-size: 80px;
-  font-style: normal;
   font-weight: 700;
   line-height: 78px; /* 97.5% */
 }
 
-.h2{
+.h2 {
   color: #3772FF;
-  font-family: "DM Sans";
-  font-style: normal;
-  font-weight: 500;
-  line-height: 78px; /* 162.5% */
-}
-.p1{
-  color: var(--Surface-main, #FFF);
+  font-family: 'DM Sans', sans-serif;
 
-  /* Body 02 (Bold) */
-  font-family: "DM Sans";
+  font-weight: 500;
+  line-height: 58px; /* 162.5% */
+}
+
+.p1 {
+  color: var(--Surface-main, #FFF);
+  font-family: 'DM Sans', sans-serif;
   font-size: 18px;
-  font-style: normal;
   font-weight: 700;
   line-height: 24px; /* 133.333% */
 }
 
-.p3{
+.p3 {
   color: #FFF;
-  font-family: Inter;
+  font-family: 'Inter', sans-serif;
   font-size: 20px;
-  font-style: normal;
   font-weight: 500;
   line-height: normal;
 }

@@ -31,7 +31,7 @@ const AddableScrollableList: React.FC = () => {
         ))}
       </div>
       <button
-        className="mt-4 p-2 bg-blue-500 text-white rounded"
+        className="mt-4 p-2 bg-blue-500 p3 rounded"
         onClick={() => setShowForm(!showForm)}
       >
         {showForm ? 'Close Form' : 'Add Item'}
