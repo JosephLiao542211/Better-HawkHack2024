@@ -2,3 +2,20 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.h1{
+  color: #FFF;
+font-family: "DM Sans";
+font-size: 80px;
+font-style: normal;
+font-weight: 700;
+line-height: 78px; /* 97.5% */
+}
+.h2{
+  color: #3772FF;
+font-family: "DM Sans";
+font-size: 48px;
+font-style: normal;
+font-weight: 500;
+line-height: 78px; /* 162.5% */
+}
