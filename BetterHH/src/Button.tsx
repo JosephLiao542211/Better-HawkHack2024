@@ -3,10 +3,9 @@ import axios from 'axios';
 
 function Button() {
     const [data, setData] = React.useState('penis1');
-    const getData = () => {
-        fetch('http://localhost:3000/api')
-            .then((res) => res.json())
-            .then((json) => console.log(json));
+    const getData = async () => {
+        const response = await axios.get('http://localhost:5000/api');
+        setData(response.data.message);
     };
     useEffect(() => {
         getData(), [];
