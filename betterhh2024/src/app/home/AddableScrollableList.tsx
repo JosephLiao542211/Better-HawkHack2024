@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import ItemParam from './ItemParam';
 import Modal from './Modal';
+import { createClient } from '@/utils/supabase/client';
 
 interface ItemData {
   param1: string;
@@ -8,21 +9,25 @@ interface ItemData {
   param3: string;
 }
 
-const AddableScrollableList: React.FC = () => {
+const AddableScrollableList: React.FC = async () => {
   const [items, setItems] = useState<ItemData[]>([]);
   const [showModal, setShowModal] = useState(false);
-  const [formData, setFormData] = useState<ItemData>({ param1: '', param2: '', param3: '' });
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
-    setFormData(prevData => ({ ...prevData, [name]: value }));
-  };
+  const supabase = useMemo(() => createClient(), []); 
+  const { data, error } = await supabase.auth.getUser()
+  
+  data.user// Create Supabase client once
 
-  const handleAddItem = () => {
-    setItems([...items, formData]);
-    setFormData({ param1: '', param2: '', param3: '' });
-    setShowModal(false);
-  };
+  const initialItems: ItemData[] = [
+    { param1: "Value 1", param2: "Value 2", param3: "Value 3" },
+    { param1: "Value 4", param2: "Value 5", param3: "Value 6" },
+    { param1: "Value 7", param2: "Value 8", param3: "Value 9" },
+  ];
+
+  // Set initial items when component mounts
+  useState(() => {
+    setItems(initialItems);
+  });
 
   return (
     <div className="max-w-md mx-auto">
@@ -31,41 +36,18 @@ const AddableScrollableList: React.FC = () => {
           <ItemParam key={index} param1={item.param1} param2={item.param2} param3={item.param3} />
         ))}
       </div>
-      <button
+
+      {/* <button
         className="mt-4 p-2 bg-blue-500 text-white rounded"
         onClick={() => setShowModal(true)}
       >
         Add Item
       </button>
-      <Modal show={showModal} onClose={() => handleAddItem()}>
-        <div className="mt-4 p-4">
-          <input
-            type="text"
-            name="param1"
-            value={formData.param1}
-            onChange={handleInputChange}
-            placeholder="Param 1"
-            className="w-full  text-black mb-2 p2 p-2 border border-gray-300 rounded"
-          />
-          <input
-            type="text"
-            name="param2"
-            value={formData.param2}
-            onChange={handleInputChange}
-            placeholder="Param 2"
-            className="w-full mb-2 p2 p-2  text-black border border-gray-300 rounded"
-          />
-          <input
-            type="text"
-            name="param3"
-            value={formData.param3}
-            onChange={handleInputChange}
-            placeholder="Param 3"
-            className="w-full mb-2 text-black p-2 border border-gray-300 rounded"
-          />
-          
-        </div>
-      </Modal>
+      <Modal
+        show={showModal}
+        onClose={() => setShowModal(false)}
+        onAddItem={handleAddItem}
+      /> */}
     </div>
   );
 };
