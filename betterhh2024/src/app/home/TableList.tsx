@@ -1,43 +1,29 @@
 // TableList.tsx
-import { useState, useEffect } from 'react';
 import TableRowComponent from './TableRowComponent';
 
-import { createClient } from '@/utils/supabase/client'
+import { runPython } from '@/src/app/run-python/actions'
 
 interface RowData {
   name: string;
   task_rep: number;
-  created_date: string;
   due_date: string;
   totalBounty: string;
+  id: number;
 }
 
 async function TableList() {
-  const [rowData, setRowData] = useState<RowData[]>([]);
-  const supabase = createClient()
-  const { data, error } = await supabase.auth.getUser()
-
-  useEffect(() => {
-      async function getBounties() {
-        const bountyData = await supabase.from('bounties').select('*');
-
-        // Process each row in the bountyData
-        const processedData: RowData[] = [];
-        bountyData.data?.forEach((row) => {
-          // Example: Create a new variable from the row
-          const newRow = {
-            ...row,
-            newField: row.existingField * 2, // Example of adding a new field
-          };
-          processedData.push(newRow);
-        });
-        // Update the state with the processed data
-        setRowData(processedData);
-      }
-  }, [])
+  const rowData: RowData[] = [
+    {name: 'Do 10 pushups', task_rep: 10, due_date: '2024-06-24', totalBounty: '50 ETH', id: 1},
+    {name: 'Do 10 jumping jacks', task_rep: 10, due_date: '2024-06-28', totalBounty: '150 ETH', id: 2},
+    {name: 'Do 10 squats', task_rep: 10, due_date: '2024-06-16', totalBounty: '120 ETH', id: 3},
+    {name: 'Do 20 reps of bench', task_rep: 20, due_date: '2024-08-12', totalBounty: '30 ETH', id: 4},
+    {name: 'Do 50 lunges', task_rep: 50, due_date: '2024-09-08', totalBounty: '10 ETH', id: 5},
+    {name: 'Do 80 goblet squats', task_rep: 80, due_date: '2024-10-20', totalBounty: '80 ETH', id: 6},
+  ];
 
   const handleEnter = (id: number) => {
     console.log(`Enter button clicked for row with id: ${id}`);
+    runPython();
   };
 
   return (
@@ -53,7 +39,7 @@ async function TableList() {
           <TableRowComponent
             key={row.id}
             name={row.name}
-            date={row.date}
+            date={row.due_date}
             totalBounty={row.totalBounty}
             onEnter={() => handleEnter(row.id)}
           />

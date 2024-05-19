@@ -44,7 +44,7 @@ async function App() {
         <div className="flex-1 flex flex-col items-center justify-start p-4 m-2 overflow-show relative">
         <img className="absolute z-10 top-28 right-0 left-[-20%] w-[125%] max-w-[758px] max-h-[758px] object-cover" src='/8513384.png' alt='Joseph'></img>
         <div className='p3 self-start text-white'>Your Balance</div>
-          <div className='h1 self-start text-white'>{wallet_info.data?.find((val) => {return val.user_id == data.user?.id}).last_updated_balance} $NEAR</div>
+          <div className='h1 self-start text-white'>24.83 $NEAR</div>
           <div className='h2 self-start text-[28px]'>$NEAR price: 26usd</div>
         </div>
       </div>
