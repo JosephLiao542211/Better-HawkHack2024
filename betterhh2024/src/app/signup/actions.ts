@@ -20,9 +20,19 @@ export async function signup(formData: FormData) {
         }
     }
 
-    const { error } = await supabase.auth.signUp(data)
+    const signup = await supabase.auth.signUp(data)
 
-    if (error) {
+    if (signup.error) {
+        console.log("Sign Up Error")
+        redirect('/error')
+    }
+
+    const user_data = await supabase.auth.getUser();
+    const wallet_insert = await supabase.from('wallets').insert({user_id: user_data.data.user?.id, wallet_address: formData.get('wallet_address'), last_updated_balance: 0})
+
+    if (wallet_insert.error) {
+        console.log("Wallet Insert Error")
+        console.log(user_data.data.user?.id)
         redirect('/error')
     }
 
