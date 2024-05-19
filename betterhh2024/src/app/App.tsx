@@ -1,10 +1,14 @@
 import ScrollableList from "./ScrollableList"
 import AddableScrollableList from './AddableScrollableList'
 
-function App() {
+import { createClient } from '@/utils/supabase/client'
+
+async function App() {
+  const supabase = createClient()
+  const { data, error } = await supabase.auth.getUser()
+
   return (
     <div className="flex flex-col overflow-hidden bg-[#141416] relative pb-32">
-      
       <div className='m-8 grid grid-cols-2'>
         <div className='col-span-1'>
           <div className='text-white h1 mt-10'>Hello, Joseph</div>
@@ -37,7 +41,6 @@ function App() {
         <div className='p3 self-start text-white'>Your Balance</div>
           <div className='h1 self-start text-white'>3.4 $NEAR</div>
           <div className='h2 self-start text-[28px]'>$NEAR price: 26usd</div>
-          
         </div>
       </div>
     </div>
