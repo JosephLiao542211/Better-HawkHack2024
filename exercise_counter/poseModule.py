@@ -1,6 +1,7 @@
 import cv2
 import mediapipe as mp
 import math
+import streamlit as st
 
 class poseDetector() :
     
@@ -83,14 +84,16 @@ class poseDetector() :
         
 
 def main():
+    frame_placeholder = st.empty()
+    sbp = st.button('stop')
     detector = poseDetector()
     cap = cv2.VideoCapture(0)
-    while cap.isOpened():
+    while cap.isOpened() and  not sbp:
         ret, img = cap.read() #ret is just the return variable, not much in there that we will use. 
         if ret:    
             img = detector.findPose(img)
-            cv2.imshow('Pose Detection', img)
-        if cv2.waitKey(10) & 0xFF == ord('q'):
+            frame_placeholder.image(img, channels="RGB")
+        if cv2.waitKey(10) & 0xFF == ord('q') or sbp:
             break
             
     cap.release()
