@@ -2,6 +2,7 @@
 import TableRowComponent from './TableRowComponent';
 
 import { runPython } from '@/src/app/run-python/actions'
+import { addFunds } from './actions'
 
 interface RowData {
   name: string;
@@ -24,6 +25,7 @@ async function TableList() {
   const handleEnter = (id: number) => {
     console.log(`Enter button clicked for row with id: ${id}`);
     runPython();
+    addFunds(1);
   };
 
   return (
