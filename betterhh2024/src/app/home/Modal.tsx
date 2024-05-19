@@ -99,7 +99,7 @@ const Modal: React.FC<ModalProps> = ({ show, onClose, children }) => {
     <div key={imageName} className="mb-4">
       <div className="p2 mb-2">{imageName === '1.png' && 'Reps of Pushups'}
         {imageName === '2.png' && 'Reps of Squats'}
-        {imageName === '3.png' && 'Distance of Run'}
+        {imageName === '3.png' && 'Distance of Run (km) '}
         {imageName === '4.png' && 'Reps of Situps'}</div>
       {selectedImages.length === 1 ? (
         <input

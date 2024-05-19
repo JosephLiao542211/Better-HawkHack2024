@@ -1,4 +1,5 @@
 import ScrollableList from "./ScrollableList"
+import Logout from "./Logoutbutton"
 import AddableScrollableList from './AddableScrollableList'
 
 import { createClient } from '@/utils/supabase/client'
@@ -17,6 +18,9 @@ async function App() {
 </div>
         </div>
         <div className='col-span-1 flex justify-end items-center'>
+          <div className="mr-20">
+          <Logout></Logout>
+          </div>
           <img src='Group 8.png' className='max-w-[140px] mr-[5%] max-h-[140px]' />
         </div>
       </div>
