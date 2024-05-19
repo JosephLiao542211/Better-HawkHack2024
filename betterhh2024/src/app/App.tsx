@@ -13,7 +13,7 @@ function App() {
 </div>
         </div>
         <div className='col-span-1 flex justify-end items-center'>
-          <img src='Group 8.png' className='max-w-[120px] mr-[5%] max-h-[120px]' />
+          <img src='Group 8.png' className='max-w-[140px] mr-[5%] max-h-[140px]' />
         </div>
       </div>
 
