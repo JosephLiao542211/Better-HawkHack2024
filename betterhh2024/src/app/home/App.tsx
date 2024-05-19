@@ -11,7 +11,7 @@ async function App() {
     <div className="flex flex-col overflow-hidden bg-[#141416] relative pb-32">
       <div className='m-8 grid grid-cols-2'>
         <div className='col-span-1'>
-          <div className='text-white h1 mt-10'>Hello, Joseph</div>
+          <div className='text-white h1 mt-10'>Hello, {data.user?.user_metadata.first_name}</div>
           <div className='text-[36px] h2 mt-5'>
   Your so <span className='font-bold'>NEAR</span> you're goals
 </div>

@@ -1,23 +1,13 @@
-"use client";
-import { useEffect } from 'react';
-import App from './App';
-import Marketplace from './Marketplace';
+import { login } from './actions'
 
-import { createClient } from '@/utils/supabase/client'
-import { redirect } from 'next/navigation'
-
-export default async function Home() {
-  const supabase = createClient()
-
-  const { data, error } = await supabase.auth.getUser()
-  if (error || !data?.user) {
-      redirect('/login')
-  }
-
-  return (
-    <>
-      <App></App>
-      <Marketplace></Marketplace>
-    </>
-  );
+export default function LoginPage() {
+    return (
+        <form>
+            <label htmlFor="email">Email:</label>
+            <input id="email" name="email" type="email" className="text-black" required />
+            <label htmlFor="password">Password:</label>
+            <input id="password" name="password" type="password" className="text-black" required />
+            <button formAction={login}>Log in</button>
+        </form>
+    )
 }
