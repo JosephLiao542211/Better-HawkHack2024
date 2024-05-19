@@ -1,53 +1,66 @@
 // TableList.tsx
-import React from 'react';
+import { useState, useEffect } from 'react';
 import TableRowComponent from './TableRowComponent';
 
+import { createClient } from '@/utils/supabase/client'
+
 interface RowData {
-    name: string;
-    date: string;
-    totalBounty: string;
-    id: number;
+  name: string;
+  task_rep: number;
+  created_date: string;
+  due_date: string;
+  totalBounty: string;
 }
 
-const TableList: React.FC = () => {
-    const rows: RowData[] = [
-        { name: 'Alice', date: '2024-05-01', totalBounty: '$100', id: 1 },
-        { name: 'Bob', date: '2024-05-02', totalBounty: '$200', id: 2 },
-        { name: 'Charlie', date: '2024-05-03', totalBounty: '$300', id: 3 },
-        { name: 'Alice', date: '2024-05-01', totalBounty: '$100', id: 1 },
-        { name: 'Bob', date: '2024-05-02', totalBounty: '$200', id: 2 },
-        { name: 'Charlie', date: '2024-05-03', totalBounty: '$300', id: 3 },
-        { name: 'Alice', date: '2024-05-01', totalBounty: '$100', id: 1 },
-        { name: 'Bob', date: '2024-05-02', totalBounty: '$200', id: 2 },
-        { name: 'Charlie', date: '2024-05-03', totalBounty: '$300', id: 3 },
-        // Add more rows as needed
-    ];
+async function TableList() {
+  const [rowData, setRowData] = useState<RowData[]>([]);
+  const supabase = createClient()
+  const { data, error } = await supabase.auth.getUser()
 
-    const handleEnter = (id: number) => {
-        console.log(`Enter button clicked for row with id: ${id}`);
-    };
+  useEffect(() => {
+      async function getBounties() {
+        const bountyData = await supabase.from('bounties').select('*');
 
-    return (
-        <div className="w-full overflow-x-auto ">
-            <div className="flex w-full bg-gray-100 bg-opacity-5 p1 p-1 ">
-                <div className="flex-1 p-2">Name</div>
-                <div className="flex-1 p-2">Date</div>
-                <div className="flex-1 p-2">Total Bounty</div>
-                <div className="flex-1 p-2">Action</div>
-            </div>
-            <div className="max-h-96 overflow-y-auto ">
-                {rows.map((row) => (
-                    <TableRowComponent
-                        key={row.id}
-                        name={row.name}
-                        date={row.date}
-                        totalBounty={row.totalBounty}
-                        onEnter={() => handleEnter(row.id)}
-                    />
-                ))}
-            </div>
-        </div>
-    );
+        // Process each row in the bountyData
+        const processedData: RowData[] = [];
+        bountyData.data?.forEach((row) => {
+          // Example: Create a new variable from the row
+          const newRow = {
+            ...row,
+            newField: row.existingField * 2, // Example of adding a new field
+          };
+          processedData.push(newRow);
+        });
+        // Update the state with the processed data
+        setRowData(processedData);
+      }
+  }, [])
+
+  const handleEnter = (id: number) => {
+    console.log(`Enter button clicked for row with id: ${id}`);
+  };
+
+  return (
+    <div className="w-full overflow-x-auto ">
+      <div className="flex w-full bg-gray-100 bg-opacity-5 p1 p-1 ">
+        <div className="flex-1 p-2">Name</div>
+        <div className="flex-1 p-2">Date</div>
+        <div className="flex-1 p-2">Total Bounty</div>
+        <div className="flex-1 p-2">Action</div>
+      </div>
+      <div className="max-h-96 overflow-y-auto ">
+        {rowData.map((row: RowData) => (
+          <TableRowComponent
+            key={row.id}
+            name={row.name}
+            date={row.date}
+            totalBounty={row.totalBounty}
+            onEnter={() => handleEnter(row.id)}
+          />
+        ))}
+      </div>
+    </div>
+  );
 };
 
 export default TableList;
