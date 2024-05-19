@@ -35,6 +35,16 @@ export default function LoginPage() {
                         required
                     />
                 </div>
+                <div className="">
+                    <label htmlFor="password" className="block text-gray-700 font-bold mb-2">Wallet Address:</label>
+                    <input
+                        id="wallet_address"
+                        name="wallet_address"
+                        type="text"
+                        className="w-full p-2 border border-gray-300 rounded text-black"
+                        required
+                    />
+                </div>
                 <button
                     type="submit"
                     className="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
