@@ -2,35 +2,45 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
+import ScrollableList from "./ScrollableList"
+import Button from './Button'
+import AddableScrollableList from './AddableScrollableList'
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-      <div className="flex space-x-4 mb-8">
-        <a href="https://vitejs.dev" target="_blank" rel="noopener noreferrer">
-          <img src={viteLogo} className="w-24 h-24" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank" rel="noopener noreferrer">
-          <img src={reactLogo} className="w-24 h-24" alt="React logo" />
-        </a>
+    <div className="flex flex-col min-h-screen overflow-hidden bg-[#141416] relative pb-32">
+      
+      <div className='m-8 grid grid-cols-2'>
+  <div className='col-span-1'>
+    <div className='text-white h1  mt-10'>Hello, Joseph!</div>
+    <div className='text-[48px] h2'> You're so $NEAR your goals.... </div>
+  </div>
+  <div className='col-span-1 flex justify-end items-center'>
+    <img src='Group 8.png' className='max-w-[198px] mr-[5%] max-h-[198px]' />
+  </div>
+</div>
+
+      <div className="flex w-full flex-1 pb-18">
+        <div className="flex-1 flex flex-col  items-center rounded-3xl justify-start p-4 bg-[#1f1f1f] m-2 ">
+          <h2 className="text-white p1 m-3 ">Completed Goals  </h2>
+          <ScrollableList />
+        </div>
+        
+        <div className="flex-1 flex flex-col items-center justify-start p-4 bg-[#1f1f1f] rounded-3xl m-2 ">
+          <h2 className="text-white p1  m-3 ">Pending Goals</h2>
+          <AddableScrollableList />
+          
+        </div>
+
+        
+        <div className="flex-1 flex flex-col items-center justify-start p-4  m-2 overflow-show relative">
+        <img className="absolute z-10 top-8 right-0 left-[-10%] w-[125%] max-w-[758px] max-h-[758px] object-cover" src='/8513384.png' alt='Joseph'></img>
+        <div className='p3 self-start text-white'>Your Balance</div>
+          <div className='h1 self-start text-white'>3.4 $NEAR</div>
+          <div className='h2 self-start text-[28px]'>$NEAR price: 26usd</div>
+          
+        </div>
       </div>
-      <h1 className="text-4xl font-bold mb-4">Vite + React</h1>
-      <div className="card p-6 bg-white shadow-md rounded-lg">
-        <button
-          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          count is {count}
-        </button>
-        <p className="mt-4">
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="mt-6 text-gray-600">
-        Click on the Vite and React logos to learn more
-      </p>
     </div>
   )
 }
