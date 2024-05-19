@@ -1,6 +1,7 @@
 import ScrollableList from "./ScrollableList"
 import Logout from "./Logoutbutton"
 import AddableScrollableList from './AddableScrollableList'
+import Wallet from './Wallet'
 
 import { createClient } from '@/utils/supabase/client'
 
@@ -31,6 +32,7 @@ async function App() {
   <div className="w-full">
     <h2 className="text-white p1 m-3 text-left">Completed Goals</h2>
     <ScrollableList />
+    <Wallet></Wallet>
   </div>
 </div>
 
