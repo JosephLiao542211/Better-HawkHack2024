@@ -33,7 +33,7 @@ const ScrollableList: React.FC = () => {
     };
 
     return (
-        <div className="h-64 w-full bg-opacity-0 overflow-y-scroll bg-gray-100 p-4 rounded-md bg-[#191D23] shadow-md">
+        <div className="h-96 w-full bg-opacity-0 overflow-y-scroll bg-gray-100 p-4  bg-[#191D23] shadow-md">
             <ul className="space-y-2">
                 {items.map(item => (
                     <Item key={item.id} text={item.text} />

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import ItemParam from './ItemParam';
+import Modal from './Modal';
 
 interface ItemData {
   param1: string;
@@ -9,7 +10,7 @@ interface ItemData {
 
 const AddableScrollableList: React.FC = () => {
   const [items, setItems] = useState<ItemData[]>([]);
-  const [showForm, setShowForm] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const [formData, setFormData] = useState<ItemData>({ param1: '', param2: '', param3: '' });
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -20,31 +21,31 @@ const AddableScrollableList: React.FC = () => {
   const handleAddItem = () => {
     setItems([...items, formData]);
     setFormData({ param1: '', param2: '', param3: '' });
-    setShowForm(false);
+    setShowModal(false);
   };
 
   return (
-    <div className="max-w-md w-full mx-auto">
-      <div className="max-h-64 overflow-y-auto ">
+    <div className="max-w-md mx-auto">
+      <div className="max-h-64 overflow-y-auto rounded">
         {items.map((item, index) => (
           <ItemParam key={index} param1={item.param1} param2={item.param2} param3={item.param3} />
         ))}
       </div>
       <button
-        className="mt-4 p-2 bg-blue-500 p3 rounded"
-        onClick={() => setShowForm(!showForm)}
+        className="mt-4 p-2 bg-blue-500 text-white rounded"
+        onClick={() => setShowModal(true)}
       >
-        {showForm ? 'Close Form' : 'Add Item'}
+        Add Item
       </button>
-      {showForm && (
-        <div className="mt-4 p-4 border border-gray-300 rounded">
+      <Modal show={showModal} onClose={() => handleAddItem()}>
+        <div className="mt-4 p-4">
           <input
             type="text"
             name="param1"
             value={formData.param1}
             onChange={handleInputChange}
             placeholder="Param 1"
-            className="w-full mb-2 p-2 border border-gray-300 rounded"
+            className="w-full  text-black mb-2 p2 p-2 border border-gray-300 rounded"
           />
           <input
             type="text"
@@ -52,7 +53,7 @@ const AddableScrollableList: React.FC = () => {
             value={formData.param2}
             onChange={handleInputChange}
             placeholder="Param 2"
-            className="w-full mb-2 p-2 border border-gray-300 rounded"
+            className="w-full mb-2 p2 p-2  text-black border border-gray-300 rounded"
           />
           <input
             type="text"
@@ -60,16 +61,11 @@ const AddableScrollableList: React.FC = () => {
             value={formData.param3}
             onChange={handleInputChange}
             placeholder="Param 3"
-            className="w-full mb-2 p-2 border border-gray-300 rounded"
+            className="w-full mb-2 text-black p-2 border border-gray-300 rounded"
           />
-          <button
-            className="mt-2 p-2 bg-green-500 text-white rounded"
-            onClick={handleAddItem}
-          >
-            Add
-          </button>
+          
         </div>
-      )}
+      </Modal>
     </div>
   );
 };

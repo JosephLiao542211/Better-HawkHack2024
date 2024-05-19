@@ -65,21 +65,33 @@ body {
   line-height: 78px; /* 97.5% */
 }
 
-.h2 {
-  color: #3772FF;
+
+.ht1 {
+  color: #FFF;
   font-family: 'DM Sans', sans-serif;
 
-  font-weight: 500;
-  line-height: 58px; /* 162.5% */
+  font-weight: 700;
+  line-height: 78px; /* 97.5% */
+}
+
+
+.h2 {
+  color: #365ebd;
+  font-family: 'Inter', sans-serif;
+
+  font-weight: 300;
+  /* line-height: 58px; 162.5% */
 }
 
 .p1 {
   color: var(--Surface-main, #FFF);
-  font-family: 'DM Sans', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 18px;
-  font-weight: 700;
+  text-align: left;
+  font-weight: 300;
   line-height: 24px; /* 133.333% */
 }
+
 
 .p3 {
   color: #FFF;
